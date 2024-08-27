@@ -3,16 +3,16 @@ require 'json'
 package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 
 Pod::Spec.new do |s|
-  s.name            = "RNSoundLevel"
+  s.name            = "RNRecordSpeech"
 
-  s.version         = package['version']
-  s.summary         = package['description']
+  s.version         = package['1.0']
+  s.summary         = package['React Native module for detecting and recording speech
   s.description     = package['description']
-  s.license         = package['license']
-  s.author          = package['author']
+  s.license         = package['MIT']
+  s.author          = package['Tom Langan']
   s.homepage        = package['homepage']
 
-  s.platform        = :ios, "9.0"
+  s.platform        = :ios, "13.0"
 
   s.source          = { :git => package['repository']['url'] }
   s.source_files    = "ios/**/*.{h,m}"

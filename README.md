@@ -36,12 +36,6 @@ In XCode, in the project navigator, select your project.
 * Add the `libRNSoundLevel.a` from the _soundlevel_ project to your project's _Build Phases ➜ Link Binary With Libraries_
 ```
 
-### Installation on Ubuntu
-1. Add to package.json: `"desktopExternalModules": [ "node_modules/react-native-sound-level/desktop" ]`
-2. You may need to make QT's multimedia library accessible for linker
-`sudo ln -s $YOUR_QT_DIR/5.9.1/gcc_64/lib/libQt5Multimedia.so /usr/local/lib/libQt5Multimedia.so`
-
-
 ### React Native 0.60+
 To make it run correctly on iOS you may need the following:
 1. Add `pod 'react-native-sound-level', :podspec => '../node_modules/react-native-sound-level/RNSoundLevel.podspec'` to your `ios/Podfile` file.

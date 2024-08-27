@@ -2,10 +2,7 @@
 
 import { NativeModules, NativeAppEventEmitter, Platform } from 'react-native'
 
-var SoundLevelModule =
-  Platform.OS === 'desktop'
-    ? NativeModules.RNSoundLevel
-    : NativeModules.RNSoundLevelModule
+var SoundLevelModule = NativeModules.RNSoundLevelModule;
 
 var SoundLevel = {
   timer: null,
@@ -24,26 +21,18 @@ var SoundLevel = {
       this.frameSubscription.remove()
     }
 
-    if (Platform.OS === 'desktop') {
-      this.timer = setInterval(async () => {
+    
+    this.frameSubscription = NativeAppEventEmitter.addListener(
+      'frame',
+      data => {
         if (this.onNewFrame) {
-          const frame = await SoundLevelModule.measure()
-          this.onNewFrame(JSON.parse(frame))
+          this.onNewFrame(data)
         }
-      }, monitorConfig.monitorInterval)
-    } else {
-      this.frameSubscription = NativeAppEventEmitter.addListener(
-        'frame',
-        data => {
-          if (this.onNewFrame) {
-            this.onNewFrame(data)
-          }
-        }
-      )
-    }
+      }
+    )
 
     // Monitoring interval not supported for Android yet. Feel free to add and do a pull request. :)
-    return Platform.OS !== 'desktop' ? SoundLevelModule.start(monitorConfig.monitorInterval, monitorConfig.samplingRate) : SoundLevelModule.start()
+    return  SoundLevelModule.start(monitorConfig.monitorInterval, monitorConfig.samplingRate);
   },
 
   stop: function () {

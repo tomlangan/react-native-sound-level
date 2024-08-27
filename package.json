@@ -1,7 +1,7 @@
 {
-  "name": "react-native-sound-level",
-  "version": "1.2.0",
-  "description": "A package to dynamically measure microphone input level",
+  "name": "react-native-record-speech",
+  "version": "1.0.0",
+  "description": "A package to record speech",
   "main": "index.js",
   "author": "Vladimir Osipov (https://github.com/punarinta)",
   "homepage": "https://github.com/punarinta/react-native-sound-level",
@@ -12,10 +12,9 @@
     "index.d.ts",
     "RNSoundLevel.podspec",
     "android/*",
-    "ios/RNSoundLevelModule.m",
-    "ios/RNSoundLevelModule.h",
+    "ios/RNAudioRecord.m",
+    "ios/RNAudioRecord.h",
     "ios/RNSoundLevel.xcodeproj",
-    "desktop/*"
   ],
   "keywords": [
     "react-native",
